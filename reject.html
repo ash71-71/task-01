@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       function fetchWithTimeout(url, timeout) {
+            const timeoutPromise = new Promise((_, reject) => {
+                setTimeout(() => {
+                    reject(new Error('Request timed out'));
+                }, timeout);
+            });
+
+            const fetchPromise = fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                });
+
+            return Promise.race([fetchPromise, timeoutPromise])
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.log(error.message);
+                });
+        }
+
+        fetchWithTimeout('https://pokeapi.co/api/v2/pokemon/ditto', 60);
+
+    </script>
+</body>
+</html>
