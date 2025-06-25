@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function findMax(a,b,c){
+            a=Number(a);
+            b=Number(b);
+            c=Number(c);
+            if(a>b && a>c){
+                return a+ " a";
+            }
+            else if(b>a && b>c){
+                return b+"b";
+            }
+            else{
+                return c + " c";
+            }
+        }
+        let a = prompt("enter the a number");
+        let b = prompt("enter the b number");
+        let c = prompt("enter the c number");
+        let result=findMax(a,b,c);
+        alert(result+" is the largest number");
+    </script>
+</body>
+</html>
