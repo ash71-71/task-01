@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+       const url = [
+            'https://pokeapi.co/api/v2/pokemon/ditto',
+            'https://pokeapi.co/api/v2/pokemon/charmander'
+        ];
+      function fetchAll(url){
+        let fetchpromise=url.map(url => fetch(url));
+        Promise.all(fetchpromise)
+        .then(Response =>{
+            return Promise.all(Response.map(Response => Response.json()));
+        })
+        .then(data =>{
+            console.log("all url Fetched",data);
+        })
+        .catch(error=>{
+            console.log(error.message);
+        });
+      }
+        fetchAll(url);
+    </script>
+</body>
+</html>
