@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let student = {
+                name: "john",
+                age: "25",
+                garde: [7, 6.5, 6, 6.5],
+
+                calcu() {
+                    let result1 = 0;
+                    let result = this.garde;
+
+                    for (let i = 0; i < result.length; i++) {
+                        result1 += result[i];
+                    }
+
+
+                    let average = result1 / result.length;
+
+                    return {
+                        name: this.name,
+                        age: this.age,
+                        averageGrade: average
+                    };
+                }
+            };
+
+            let main_result = student.calcu();
+            alert(`Name: ${main_result.name}, Age: ${main_result.age}, Average Grade: ${main_result.averageGrade}`);
+</script>
+</body>
+
+</html>
